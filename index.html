@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartFixTech:Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <nav>
+            <div class="part1">
+                <img src="./img/2-removebg-preview.png" alt="Logo">
+            </div>
+            <div class="part2">
+                <h2>Admin</h2>
+                <img src="./img/profle.png" alt="profile">
+            </div> 
+        </nav>
+        <section id="dashboard">
+            
+            <div class="count">
+                <div class="card">
+                    <h1>Customer</h1>
+                    <br>
+                    <div class="contain">
+                        <div id="num">
+                            <h1 class="counter" data-count="100">0</h1>
+                        </div>
+                    <p>New Customers Today</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h1>Technician</h1>
+                    <br>
+                    <div class="contain">
+                        <div id="num">
+                            <h1 class="counter" data-count="45">0</h1>
+                        </div>
+                    <p>New Customers Today</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h1>Retailer</h1>
+                    <br>
+                    <div class="contain">
+                        <div id="num">
+                            <h1 class="counter" data-count="20">0</h1>
+                        </div>
+                    <p>New Customers Today</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h1>Total user</h1>
+                    <br>
+                    <div class="contain">
+                        <div id="num">
+                            <h1 class="counter" data-count="165">0</h1>
+                        </div>
+                    <p>New Customers Today</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script>
+
+        const counters = document.querySelectorAll(".counter");
+
+        counters.forEach(counter => {
+            let initial_count = 0;
+            const final_count = counter.dataset.count;
+            // console.log(final_count);
+
+            let  counting = setInterval(updateCounting, 40);
+
+           function updateCounting() {
+
+                if (initial_count < 1000) {
+                    initial_count += 5;
+                    counter.innerText = initial_count;
+                }
+
+                if (initial_count >= 1000) {
+                    initial_count += 100;
+                    counter.innerText = (initial_count / 1000).toFixed(1) + 'K+';
+                }
+
+                if (initial_count >= 10000) {
+                    initial_count += 5000;
+                }
+
+                if (initial_count >= 1000000) {
+                    initial_count += 500000;
+                    counter.innerText = (initial_count / 1000000).toFixed(1) + 'M+';
+                }
+
+                if (initial_count >= final_count) {
+                    clearInterval(counting);
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
